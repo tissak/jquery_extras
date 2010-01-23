@@ -66,18 +66,168 @@ describe "jQuery extra widget"
     $w.all.length.should.equal 0
   end
   
+  it 'should find test node ready'
+    $("#testSpace1").length.should.equal 1
+  end
+  
   it "should parse a region and produce widgets"
+    $w.all.length.should.equal 0
     $w.parse("#testSpace1")
     $w.all.length.should.equal 1
   end
 
   it "should not produce more widgets reparsing a region"
+    $w.all.length.should.equal 1
     $w.parse("#testSpace1")
     $w.all.length.should.equal 1
   end
 
   it "should produce additional widgets when parsing whole document"
-    $w.parse()
+    $w.parse(window.document.body)
     $w.all.length.should.equal 2
+  end
+  
+  it "should produce all widgets with an id"
+    jQuery.each($w.all, function(index, item){
+      item.id.should_not.equal null
+      item.id.should_not.equal ""
+    })  
+  end
+  
+  it "should allow fetching of widget by id"
+    var w = $w.byId("button1")
+    w.should_not.be null
+    typeof(w).should.be "object"
+  end
+  
+  it "allows for building a widget manually"
+    var newWidget = new widgets.Button();
+    newWidget.should_not.be null
+    typeof(newWidget).should.be "object"
+    $w.all.length.should.be 3
+  end
+
+  it "should have attached the templates handles"
+    var widget = $w.all[0];
+    widget.clickable.should_not.be null    
+  end
+  
+  it "should set widgets types"
+    $w.all[0].widgetType.should.equal "widgets.Button"
+  end
+  
+  it "should be able to return a jquery reference from the widget"
+    $w.all[0].$().jquery.should.be "1.4"
+  end
+
+  it "should move node properties onto the widget"
+    $w.all[1].val.should.equal "testval"
+  end
+  
+  it "can build a widget manually with props & no node"
+    var newWidget = new widgets.Button(null, {val:1});
+    newWidget.should_not.be null
+    typeof(newWidget).should.be "object"
+    $w.all.length.should.be 4
+    newWidget.val.should.be 1
+  end
+  
+  it "can build a widget manually with node & no props"
+    var targ = $("#targetNode")[0];
+    var newWidget = new widgets.Button(targ);
+    newWidget.should_not.be null
+    $w.all.length.should_be 5
+  end
+
+  it "can build a widget manually with node + props"
+    var newWidget = new widgets.Button($("<div something='1'>asd</div>")[0],{val:1});
+    newWidget.should_not.be null
+    $w.all.length.should_be 6
+    newWidget.val.should_be 1
+    newWidget.something.should_be "1"
+  end
+end
+
+describe "jQuery Extra Deferred"
+  it "can create an instance"
+    var a = new $e.Deferred();
+    typeof(a).should_be "object"
+  end
+
+  it "will fire assigned callback methods"
+    var a = new $e.Deferred();
+    window.deferredHit = null;
+    a.addCallback(function(){window.deferredHit = 1; })
+    window.deferredHit.should.be null
+    a.callback(true);
+    window.deferredHit.should.be 1
+  end
+
+  it "will fire callbacks added after success fire"
+    var a = new $e.Deferred();
+    window.deferredHit = null;
+    window.deferredHit1 = null;
+    a.addCallback(function(){window.deferredHit = 1; })
+    window.deferredHit1.should.be null
+    a.callback(true);  
+    window.deferredHit1.should.be null
+    a.addCallback(function(){window.deferredHit1 = 1; })
+    window.deferredHit1.should.be 1
+  end
+
+  it "will not fire callbacks added after fail fire"
+    var a = new $e.Deferred();
+    window.deferredHit = null;
+    window.deferredHit1 = null;
+    a.addCallback(function(){ window.deferredHit = 1; });
+    window.deferredHit.should.be null
+    window.deferredHit1.should.be null
+    a.errback(true);  
+    window.deferredHit1.should.be null
+    a.addCallback(function(){ window.deferredHit1 = 1; });
+    window.deferredHit.should.be null
+    window.deferredHit1.should.be null
+  end
+end
+
+describe "jQuery Extra Pub Sub"
+  it "Publish to an empty channel does not fail"
+    try{
+      $e.pub("nothing",[1,2,3]);      
+      true.should.be true
+    }catch(e){
+      e.should.be null
+    }
+  end
+
+  it "should be able to cause single subscription to fire with publish"
+    window.chan1 = null;
+    $e.sub("chan1",function(){ window.chan1 = true; })
+    window.chan1.should.be null
+    $e.pub("chan1",[true]);
+    window.chan1.should.be true
+  end
+
+  it "should be able to publish with arguments"
+    window.chan2 = null;
+    $e.sub("chan2",function(a){ window.chan2 = a; })
+    window.chan2.should.be null
+    $e.pub("chan2",["something"]);
+    window.chan2.should.be "something"
+  end
+
+  it "should publish to a channel causing multiple subscriptions to pass arguments"
+    $e.sub("chan3",function(a){ window.chan3 = a; });
+    $e.sub("chan3",function(a){ window.chan4 = a; });
+    $e.sub("chan3",function(a){ window.chan5 = a; });
+    $e.sub("chan3",function(a){ window.chan6 = a; });
+    $e.sub("chan3",function(a){ window.chan7 = a; });
+
+    $e.pub("chan3",["something"]);
+    window.chan3.should.be "something"
+    window.chan4.should.be "something"
+    window.chan5.should.be "something"
+    window.chan6.should.be "something"
+    window.chan7.should.be "something"
   end
 end

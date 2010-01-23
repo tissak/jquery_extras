@@ -5,13 +5,13 @@
 		<script src="/Library/Ruby/Gems/1.8/gems/jspec-3.1.3/lib/jspec.xhr.js"></script>
 		<script src="../lib/jquery.js"></script>
 		<script src="../lib/jquery_extras_core.js"></script>
-		<script src="unit/spec.helper.js"></script>
+		<script src="../lib/widgets/Button.js"></script>
 		<script>
 			function runSuites() {
 				JSpec
 				.exec('unit/spec.js')
-				.run()
-				.report({ fixturePath: 'fixtures' })
+				.run({ fixturePath: 'fixtures' })
+				.report()
 			}
 		</script>
 	</head>
