@@ -8,8 +8,12 @@ Envjs.wait();
 
 load('lib/jquery.js');
 
-load('lib/jquery_extras_core.js');
+load('lib/jquery_extras.js');
 load('lib/widgets/Button.js');
+load("lib/widgets/Accordion.js")
 
-
-JSpec.exec('spec/unit/spec.js').run({ reporter: JSpec.reporters.Terminal, fixturePath: 'spec/fixtures' }).report()
+JSpec
+// .exec('spec/unit/spec.js')
+// .exec('spec/unit/accordion.spec.js')
+.run({ reporter: JSpec.reporters.Terminal, fixturePath: 'spec/fixtures' })
+.report()

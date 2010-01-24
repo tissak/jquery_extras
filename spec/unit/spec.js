@@ -1,17 +1,17 @@
 describe 'Class'
   it 'should be defined'
-    typeof(Class).should.be "function"    
+    Class.should.be_a Function
   end
   it 'should be extendable'
     var newClass = Class.extend({ name: function(){} })
     var obj = new newClass();
-    typeof(obj.name).should.equal "function"
+    obj.name.should.be_a Function
   end
 end
 
 describe 'jQuery extra extensions'
   it 'should be defined'
-    typeof($e).should.be "object"
+    $e.should.be_an Object
   end
   
   it 'should be able to mixin two objects'
@@ -24,16 +24,16 @@ describe 'jQuery extra extensions'
   
   it 'should be able to set an object path'
     $e.setObjectBranch("l");
-    typeof(l).should.equal "object"
+    l.should.be_an Object
 
     $e.setObjectBranch("x.y");
-    typeof(x).should.equal "object"
-    typeof(x.y).should.equal "object"
+    x.should.be_an Object
+    x.y.should.be_an Object
   
     $e.setObjectBranch("a.b.c");
-    typeof(a).should.equal "object"
-    typeof(a.b).should.equal "object"
-    typeof(a.b.c).should.equal "object"
+    a.should.be_an Object
+    a.b.should.be_an Object
+    a.b.c.should.be_an Object
   end
   
   it 'should get an object from a string path'
@@ -45,7 +45,7 @@ end
 
 describe "jQuery extra widget"
   it 'should be defined'
-    typeof($w).should_not.equal "undefined"
+    typeof($w).should_not.be_undefined
   end
   
   it 'should provide super methods'
@@ -89,27 +89,26 @@ describe "jQuery extra widget"
   
   it "should produce all widgets with an id"
     jQuery.each($w.all, function(index, item){
-      item.id.should_not.equal null
+      item.id.should_not.be_null
       item.id.should_not.equal ""
     })  
   end
   
   it "should allow fetching of widget by id"
     var w = $w.byId("button1")
-    w.should_not.be null
+    w.should_not.be_null
     typeof(w).should.be "object"
   end
   
   it "allows for building a widget manually"
     var newWidget = new widgets.Button();
-    newWidget.should_not.be null
-    typeof(newWidget).should.be "object"
+    newWidget.should_not.be_null
     $w.all.length.should.be 3
   end
 
   it "should have attached the templates handles"
     var widget = $w.all[0];
-    widget.clickable.should_not.be null    
+    widget.clickable.should_not.be_null
   end
   
   it "should set widgets types"
@@ -126,8 +125,7 @@ describe "jQuery extra widget"
   
   it "can build a widget manually with props & no node"
     var newWidget = new widgets.Button(null, {val:1});
-    newWidget.should_not.be null
-    typeof(newWidget).should.be "object"
+    newWidget.should_not.be_null
     $w.all.length.should.be 4
     newWidget.val.should.be 1
   end
@@ -135,13 +133,13 @@ describe "jQuery extra widget"
   it "can build a widget manually with node & no props"
     var targ = $("#targetNode")[0];
     var newWidget = new widgets.Button(targ);
-    newWidget.should_not.be null
+    newWidget.should_not.be_null
     $w.all.length.should_be 5
   end
 
   it "can build a widget manually with node + props"
     var newWidget = new widgets.Button($("<div something='1'>asd</div>")[0],{val:1});
-    newWidget.should_not.be null
+    newWidget.should_not.be_null
     $w.all.length.should_be 6
     newWidget.val.should_be 1
     newWidget.something.should_be "1"
@@ -151,14 +149,14 @@ end
 describe "jQuery Extra Deferred"
   it "can create an instance"
     var a = new $e.Deferred();
-    typeof(a).should_be "object"
+    a.should_not.be_null
   end
 
   it "will fire assigned callback methods"
     var a = new $e.Deferred();
     window.deferredHit = null;
     a.addCallback(function(){window.deferredHit = 1; })
-    window.deferredHit.should.be null
+    window.deferredHit.should.be_null
     a.callback(true);
     window.deferredHit.should.be 1
   end
@@ -168,9 +166,9 @@ describe "jQuery Extra Deferred"
     window.deferredHit = null;
     window.deferredHit1 = null;
     a.addCallback(function(){window.deferredHit = 1; })
-    window.deferredHit1.should.be null
+    window.deferredHit1.should.be_null
     a.callback(true);  
-    window.deferredHit1.should.be null
+    window.deferredHit1.should.be_null
     a.addCallback(function(){window.deferredHit1 = 1; })
     window.deferredHit1.should.be 1
   end
@@ -180,13 +178,13 @@ describe "jQuery Extra Deferred"
     window.deferredHit = null;
     window.deferredHit1 = null;
     a.addCallback(function(){ window.deferredHit = 1; });
-    window.deferredHit.should.be null
-    window.deferredHit1.should.be null
+    window.deferredHit.should.be_null
+    window.deferredHit1.should.be_null
     a.errback(true);  
-    window.deferredHit1.should.be null
+    window.deferredHit1.should.be_null
     a.addCallback(function(){ window.deferredHit1 = 1; });
-    window.deferredHit.should.be null
-    window.deferredHit1.should.be null
+    window.deferredHit.should.be_null
+    window.deferredHit1.should.be_null
   end
 end
 
@@ -194,24 +192,24 @@ describe "jQuery Extra Pub Sub"
   it "Publish to an empty channel does not fail"
     try{
       $e.pub("nothing",[1,2,3]);      
-      true.should.be true
+      true.should.be_true
     }catch(e){
-      e.should.be null
+      e.should.be_null
     }
   end
 
   it "should be able to cause single subscription to fire with publish"
     window.chan1 = null;
     $e.sub("chan1",function(){ window.chan1 = true; })
-    window.chan1.should.be null
+    window.chan1.should.be_null
     $e.pub("chan1",[true]);
-    window.chan1.should.be true
+    window.chan1.should.be_true
   end
 
   it "should be able to publish with arguments"
     window.chan2 = null;
     $e.sub("chan2",function(a){ window.chan2 = a; })
-    window.chan2.should.be null
+    window.chan2.should.be_null
     $e.pub("chan2",["something"]);
     window.chan2.should.be "something"
   end

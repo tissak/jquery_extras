@@ -1,0 +1,18 @@
+.accordion{
+  width: 200px;
+}
+.accordion .panel{
+  border: 1px solid #ccc;
+  padding: 5px;
+  border-radius: 5px;
+  margin-top: 1px;
+  background-color: #eee;
+}
+.accordion .title{
+  font-weight: bold;
+  padding-bottom: 3px;
+  cursor: pointer;         
+}
+.accordion .title:hover{
+  color: blue;
+}
