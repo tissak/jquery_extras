@@ -11,9 +11,11 @@ load('lib/jquery.js');
 load('lib/jquery_extras.js');
 load('lib/widgets/Button.js');
 load("lib/widgets/Accordion.js")
+load("lib/widgets/ContentPane.js")
 
 JSpec
-// .exec('spec/unit/spec.js')
+.exec('spec/unit/spec.js')
 // .exec('spec/unit/accordion.spec.js')
+// .exec('spec/unit/contentpane.spec.js')
 .run({ reporter: JSpec.reporters.Terminal, fixturePath: 'spec/fixtures' })
 .report()

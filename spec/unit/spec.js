@@ -101,14 +101,16 @@ describe "jQuery extra widget"
   end
   
   it "allows for building a widget manually"
+    var l = $w.all.length
     var newWidget = new widgets.Button();
     newWidget.should_not.be_null
-    $w.all.length.should.be 3
+    var d = $w.all.length - l 
+    d.should.be 1
   end
 
   it "should have attached the templates handles"
-    var widget = $w.all[0];
-    widget.clickable.should_not.be_null
+    var newWidget = new widgets.Button();
+    newWidget.button.should_not.be_null
   end
   
   it "should set widgets types"
@@ -124,23 +126,26 @@ describe "jQuery extra widget"
   end
   
   it "can build a widget manually with props & no node"
+    var startCount = $w.all.length
     var newWidget = new widgets.Button(null, {val:1});
     newWidget.should_not.be_null
-    $w.all.length.should.be 4
+    ($w.all.length-startCount).should.be 1
     newWidget.val.should.be 1
   end
   
   it "can build a widget manually with node & no props"
+    var startCount = $w.all.length;
     var targ = $("#targetNode")[0];
     var newWidget = new widgets.Button(targ);
     newWidget.should_not.be_null
-    $w.all.length.should_be 5
+    ($w.all.length-startCount).should_be 1
   end
 
   it "can build a widget manually with node + props"
+    var startCount = $w.all.length;
     var newWidget = new widgets.Button($("<div something='1'>asd</div>")[0],{val:1});
     newWidget.should_not.be_null
-    $w.all.length.should_be 6
+    ($w.all.length-startCount).should_be 1
     newWidget.val.should_be 1
     newWidget.something.should_be "1"
   end
