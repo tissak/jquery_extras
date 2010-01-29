@@ -1,0 +1,109 @@
+<html>
+	<head>
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+		<title>test</title>
+		<script type="text/javascript" charset="utf-8">
+			//setup so that once document is loaded, automatically parse out widgets
+			var $wConf = {parseOnLoad:true, templateBasePath: "/javascript/widgets/"}
+		</script>
+		<script src="/javascript/jquery.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/javascript/jquery_extras.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/javascript/widgets/SideMenu.js" type="text/javascript" charset="utf-8"></script>
+  	<style>
+    	body { font-family: Arial; font-size: 16px; }
+    	dl { width: 300px; }
+    	dl,dd { margin: 0; }
+    	dt { background: #F39; font-size: 18px; padding: 5px; margin: 2px; }
+    	dt a { color: #FFF; }
+    	dd a { color: #000; }
+    	ul { list-style: none; padding: 5px; }
+  	</style>
+	</head>
+	<body id="main">
+		<p>Side Menu</p>
+		<h3>List one</h3>		
+    <dl widgetType="widgets.SideMenu">
+    	<dt><a href="/">jQuery</a></dt>
+    	<dd>
+    	<ul>
+    		<li><a href="/src/">Download</a></li>
+    		<li><a href="/docs/">Documentation</a></li>
+    		<li><a href="/blog/">Blog</a></li>
+    	</ul>
+    	</dd>
+    	<dt><a href="/discuss/">Community</a></dt>
+    	<dd>
+    	<ul>
+    		<li><a href="/discuss/">Mailing List</a></li>
+    		<li><a href="/tutorials/">Tutorials</a></li>
+    		<li><a href="/demos/">Demos</a></li>
+    		<li><a href="/plugins/">Plugins</a></li>
+    	</ul>
+    	</dd>
+    	<dt><a href="/dev/">Development</a></dt>
+    	<dd>
+    	<ul>
+    		<li><a href="/src/">Source Code</a></li>
+    		<li><a href="/dev/bugs/">Bug Tracking</a></li>
+    		<li><a href="/dev/recent/">Recent Changes</a></li>
+    	</ul>
+    	</dd>
+    </dl>
+    <h3>List two</h3>
+    <dl widgetType="widgets.SideMenu">
+    	<dt><a href="/">jQuery</a></dt>
+    	<dd>
+    	<ul>
+    		<li><a href="/src/">Download</a></li>
+    		<li><a href="/docs/">Documentation</a></li>
+    		<li><a href="/blog/">Blog</a></li>
+    	</ul>
+    	</dd>
+    	<dt><a href="/discuss/">Community</a></dt>
+    	<dd>
+    	<ul>
+    		<li><a href="/discuss/">Mailing List</a></li>
+    		<li><a href="/tutorials/">Tutorials</a></li>
+    		<li><a href="/demos/">Demos</a></li>
+    		<li><a href="/plugins/">Plugins</a></li>
+    	</ul>
+    	</dd>
+    	<dt><a href="/dev/">Development</a></dt>
+    	<dd>
+    	<ul>
+    		<li><a href="/src/">Source Code</a></li>
+    		<li><a href="/dev/bugs/">Bug Tracking</a></li>
+    		<li><a href="/dev/recent/">Recent Changes</a></li>
+    	</ul>
+    	</dd>
+    </dl>
+    <h3>Non Widget Code</h3><i>Should be untouched</i>
+    <dl>
+    	<dt><a href="/">jQuery</a></dt>
+    	<dd>
+    	<ul>
+    		<li><a href="/src/">Download</a></li>
+    		<li><a href="/docs/">Documentation</a></li>
+    		<li><a href="/blog/">Blog</a></li>
+    	</ul>
+    	</dd>
+    	<dt><a href="/discuss/">Community</a></dt>
+    	<dd>
+    	<ul>
+    		<li><a href="/discuss/">Mailing List</a></li>
+    		<li><a href="/tutorials/">Tutorials</a></li>
+    		<li><a href="/demos/">Demos</a></li>
+    		<li><a href="/plugins/">Plugins</a></li>
+    	</ul>
+    	</dd>
+    	<dt><a href="/dev/">Development</a></dt>
+    	<dd>
+    	<ul>
+    		<li><a href="/src/">Source Code</a></li>
+    		<li><a href="/dev/bugs/">Bug Tracking</a></li>
+    		<li><a href="/dev/recent/">Recent Changes</a></li>
+    	</ul>
+    	</dd>
+    </dl>
+	</body>
+</html>

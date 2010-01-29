@@ -1,0 +1,28 @@
+<html>
+	<head>
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+		<title>test</title>
+		<script type="text/javascript" charset="utf-8">
+			//setup so that once document is loaded, automatically parse out widgets
+			var $wConf = {parseOnLoad:true, templateBasePath: "/javascript/widgets/"}
+		</script>
+		<script src="/javascript/jquery.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/javascript/jquery_extras.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/javascript/widgets/Button.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body id="main">
+		<p>Buttons:</p>
+		<label>Simple button</label><br/>
+		<div widgetType="widgets.Button">Button 1</div><br/>
+		<label>Div based button</label><br/>
+		<div widgetType="widgets.DivButton">Button 2</div>
+		<label>Div based button with width attribute set on initial node</label><br/>
+		<div widgetType="widgets.DivButton" width="300px">Button 3</div>
+		<label>Expando button using animation</label><br/>
+		<div widgetType="widgets.ExpandoButton">Button 4</div>
+		<label>Super expando who's definition only needs to override the animation from Expando. Everything else is inherited.</label><br/>
+		<div widgetType="widgets.SuperExpandoButton">Button 5</div>
+		<p>All of these extend from one another making slight changes to template or actions.</p>
+
+	</body>
+</html>

@@ -8,9 +8,9 @@ describe 'content pane'
   end
   
   it "should pull in remote content on render"
+    contentPane.should_not.be_null
     var widgetCount = $w.all.length;
-    $w.parse(contentPane)
-    var diff = $w.all.length - widgetCount;
-    diff.should.be 2
+    $w.parse(contentPane[0])
+    ($w.all.length - widgetCount).should.be 2
   end
 end

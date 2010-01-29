@@ -15,7 +15,7 @@ load("lib/widgets/ContentPane.js")
 
 JSpec
 .exec('spec/unit/spec.js')
-// .exec('spec/unit/accordion.spec.js')
-// .exec('spec/unit/contentpane.spec.js')
+.exec('spec/unit/accordion.spec.js')
+.exec('spec/unit/contentpane.spec.js')
 .run({ reporter: JSpec.reporters.Terminal, fixturePath: 'spec/fixtures' })
 .report()
