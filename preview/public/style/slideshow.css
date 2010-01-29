@@ -1,21 +1,21 @@
 /** 
  * Slideshow style rules.
  */
-#slideshow {
+#slideshow, #slideshow1 {
 	margin:0 auto;
 	width:640px;
 	height:263px;
 	background:transparent url(/style/img/bg_slideshow.jpg) no-repeat 0 0;
 	position:relative;
 }
-#slideshow #slidesContainer {
+#slideshow #slidesContainer, #slideshow1 #slidesContainer {
   margin:0 auto;
   width:560px;
   height:263px;
   overflow:auto; /* allow scrollbar */
   position:relative;
 }
-#slideshow #slidesContainer .slide {
+#slideshow #slidesContainer .slide, #slideshow1 #slidesContainer .slide {
   margin:0 auto;
   width:540px; /* reduce by 20 pixels of #slidesContainer to avoid horizontal scroll */
   height:263px;
