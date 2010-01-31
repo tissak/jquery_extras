@@ -1,0 +1,32 @@
+.tabButton{
+  border: 1px solid #ccc;
+  margin-right: 10px;        
+  display: inline;
+  padding: 5px;
+  background-color: #ccc;
+  cursor: pointer;
+  -moz-border-radius-topleft: 5px;
+  -webkit-border-top-left-radius: 5px;
+  -moz-border-radius-topright: 5px;
+  -webkit-border-top-right-radius: 5px;
+}
+.tabButtonSelected{
+  background-color: white;
+  border-bottom-color: white;
+}
+.tabButtonBar{
+  height: 20px;
+  padding-left: 10px;
+}
+.tabPane{
+  padding:10px;
+}
+.tabContainer{
+  border: 1px solid #ccc;
+  margin-top: 3px;
+  background-color: white;
+  min-height: 200px;
+}
+body{
+  background-color: #eef;
+}

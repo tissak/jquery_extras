@@ -4,17 +4,28 @@
   <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
     <script src="/javascript/jquery.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" charset="utf-8">
+      var $wConf = {parseOnLoad:true, templateBasePath: "/javascript/widgets/"}
+    </script>
     <script src="/javascript/jquery_extras.js" type="text/javascript" charset="utf-8"></script>
     <script src="/javascript/widgets/Tabs.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" href="/style/tabs.css" type="text/css" media="screen" title="no title" charset="utf-8">
     <title>tabs</title>    
   </head>
   <body>
-    <div widgetType="widget.TabContainer">
-      <div id='tab1'>
+    <div widgetType="widgets.TabContainer" id='tabs'>
+      <div label="Tab 1">
+        <div>asd</div>
+        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
       </div>
-      <div id='tab2'>
+      <div label="Tab 2">
+        consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
       </div>
-      <div id='tab3'>
+      <div label="Tab 3">
+        sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat. sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat
+      </div>
+      <div label="Tab 4">
+        nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat. sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat<br/>erat<br/>erat<br/>erat<br/>erat<br/>erat<br/>erat<br/>
       </div>
     </div>
   </body>
