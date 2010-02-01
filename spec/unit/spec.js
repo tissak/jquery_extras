@@ -1,14 +1,3 @@
-describe 'Class'
-  it 'should be defined'
-    Class.should.be_a Function
-  end
-  it 'should be extendable'
-    var newClass = Class.extend({ name: function(){} })
-    var obj = new newClass();
-    obj.name.should.be_a Function
-  end
-end
-
 describe 'jQuery extra extensions'
   it 'should be defined'
     $e.should.be_an Object
@@ -20,6 +9,18 @@ describe 'jQuery extra extensions'
       $e.mixin(a,b)
       a.a.should.equal 1
       a.b.should.equal 2
+  end
+  
+  it 'should be able to set an object path to a function'
+    var func = function(){}
+    $e.setObject("u", func);
+    u.should.be_an Function
+    
+    $e.setObject("i.o", func);
+    i.o.should.be_an Function
+    
+    $e.setObject("r.s.t", func);
+    r.s.t.should.be_an Function
   end
   
   it 'should be able to set an object path'
@@ -49,15 +50,15 @@ describe "jQuery extra widget"
   end
   
   it 'should provide super methods'
-    var newClass = Class.extend({ getVal: function(){ return 1; } })
-    var subClass = newClass.extend({ getVal: function(){ return this._inherited(); }})
+    $e.declare("newClass",null,{ getVal: function(){ return 1; } })
+    $e.declare("subClass",newClass,{ getVal: function(){ return this.inherited(arguments); }})
     var obj = new subClass();
     obj.getVal().should.equal 1
   end
   
   it 'should allow modification of super returns through the call chain'
-    var newClass = Class.extend({ getVal: function(){ return 1; } })
-    var subClass = newClass.extend({ getVal: function(){ return (this._inherited() + 1); }})
+    $e.declare("newClass",null,{ getVal: function(){ return 1; } })
+    $e.declare("subClass",newClass,{ getVal: function(){ return this.inherited(arguments)+1; }})
     var obj = new subClass();
     obj.getVal().should.equal 2
   end
@@ -114,7 +115,7 @@ describe "jQuery extra widget"
   end
   
   it "should set widgets types"
-    $w.all[0].widgetType.should.equal "widgets.Button"
+    $w.all[0].declaredClass.should.equal "widgets.Button"
   end
   
   it "should be able to return a jquery reference from the widget"
