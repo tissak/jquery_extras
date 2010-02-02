@@ -11,18 +11,6 @@ describe 'jQuery extra extensions'
       a.b.should.equal 2
   end
   
-  it 'should be able to set an object path to a function'
-    var func = function(){}
-    $e.setObject("u", func);
-    u.should.be_an Function
-    
-    $e.setObject("i.o", func);
-    i.o.should.be_an Function
-    
-    $e.setObject("r.s.t", func);
-    r.s.t.should.be_an Function
-  end
-  
   it 'should be able to set an object path'
     $e.setObjectBranch("l");
     l.should.be_an Object
@@ -35,6 +23,18 @@ describe 'jQuery extra extensions'
     a.should.be_an Object
     a.b.should.be_an Object
     a.b.c.should.be_an Object
+  end
+  
+  it 'should be able to set an object path to a function'
+    var func = function(){}
+    $e.setObject("u", func);
+    u.should.be_an Function
+    
+    $e.setObject("i.o", func);
+    i.o.should.be_an Function
+    
+    $e.setObject("r.s.t", func);
+    r.s.t.should.be_an Function
   end
   
   it 'should get an object from a string path'
