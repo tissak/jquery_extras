@@ -2,13 +2,26 @@
 	<head>
 		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
 		<title>test</title>
-		<script src="/javascript/jquery.js" type="text/javascript" charset="utf-8"></script>
-    <script src="/javascript/jquery_extras.js" type="text/javascript" parseOnLoad="true"></script>
-		<script src="/javascript/connect.js" type="text/javascript" parseOnLoad="true"></script>
-    <script src="/javascript/LAB.js" type="text/javascript" charset="utf-8"></script>
+        <script src="/javascript/jquery.js" type="text/javascript" charset="utf-8"></script>
+        <script src="/javascript/extend.js" type="text/javascript" parseOnLoad="true"></script>
+        <script src="/javascript/widget.js" type="text/javascript"></script>
+        <script src="/javascript/connect.js" type="text/javascript"></script>
+        <script src="/javascript/LAB.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript" charset="utf-8">
       $e.require("widgets.Button");
     </script>
+    <style>
+      .button{
+          cursor:pointer; 
+          border:1px solid #eee; 
+          height:30px     ;     
+          -moz-border-radius: 5px;
+          -webkit-border-radius: 5px;
+      }
+      .button div{
+        padding-top: 5px;
+      }
+    </style>
     <link rel="stylesheet" href="/style/global.css" type="text/css" media="screen" title="no title" charset="utf-8">
 	</head>
 	<body id="main">

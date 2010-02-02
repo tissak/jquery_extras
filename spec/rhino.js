@@ -8,7 +8,8 @@ Envjs.wait();
 
 load('lib/jquery.js');
 
-load('lib/jquery_extras.js');
+load('lib/extend.js');
+load('lib/widget.js');
 load('lib/connect.js');
 load('lib/LAB.js');
 load('lib/widgets/Button.js');
