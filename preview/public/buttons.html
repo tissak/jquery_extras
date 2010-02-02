@@ -4,6 +4,7 @@
 		<title>test</title>
 		<script src="/javascript/jquery.js" type="text/javascript" charset="utf-8"></script>
     <script src="/javascript/jquery_extras.js" type="text/javascript" parseOnLoad="true"></script>
+		<script src="/javascript/connect.js" type="text/javascript" parseOnLoad="true"></script>
     <script src="/javascript/LAB.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript" charset="utf-8">
       $e.require("widgets.Button");
@@ -13,7 +14,7 @@
 	<body id="main">
 		<p>Buttons:</p>
 		<label>Simple button</label><br/>
-		<div widgetType="widgets.Button">Button 1</div><br/>
+		<div widgetType="widgets.Button" id='b1'>Button 1</div><br/>
 		<label>Div based button</label><br/>
 		<div widgetType="widgets.DivButton">Button 2</div>
 		<label>Div based button with width attribute set on initial node</label><br/>
@@ -23,5 +24,12 @@
 		<label>Super expando who's definition only needs to override the animation from Expando. Everything else is inherited.</label><br/>
 		<div widgetType="widgets.SuperExpandoButton">Button 5</div>
 		<p>All of these extend from one another making slight changes to template or actions.</p>
-	</body>
+    <script>
+      $e.connect($w, "parseComplete", function(){
+        jQuery.each($w.all, function(index, item){
+    	    $e.connect(item,"onClick", function(){console.log("clicked")})
+  	    })
+      })
+    </script>	
+  </body>
 </html>
