@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <script src='/javascript/jquery.js'></script>
+    <script src='/javascript/extend.js'></script>
+    <script src='/javascript/connect.js'></script>
+    <script src='/javascript/dependency.js'></script>
+    <script>
+    
+        /*
+        
+          register a dependency on the list
+          set up a dependency set which is a collection of requires that must be satisfied before executing the code
+          on dep satisfied, execute code into the page.        
+        */
+        
+        $p = {
+          start: function(){ this._start = new Date(); },
+          ping: function(){ console.log(new Date() - $p._start)}
+        }
+        
+        
+
+        $p.start();
+        var widgets = {};        
+        $e.require("dependency.level1");
+        $p.ping();
+    </script>
+  </head>
+  <body>
+  </body>
+</html>
